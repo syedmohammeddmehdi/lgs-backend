@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  lgsbackend:
+    build: .
+    restart: always
+    # labels:
+    #   - traefik.frontend.rule=Host:
+    networks:
+     - web
+    ports:
+      - "3005:3005"
+networks:
+ web:
+   external: true

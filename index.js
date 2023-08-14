@@ -424,7 +424,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // Connect to the MongoDB database
-mongoose.connect('mongodb://localhost:27017/lgs', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -532,7 +532,7 @@ const careerFormSchema = new mongoose.Schema({
 
 const CareerForm = mongoose.model('CareerForm', careerFormSchema);
 
-const adminEmail = '160419733122@mjcollege.ac.in'; // Replace with the admin's email address
+const adminEmail = 'info@labyrinthglobalsolutions.com'; // Replace with the admin's email address
 
 // API for registration
 app.post('/register', async (req, res, next) => {
@@ -567,7 +567,7 @@ app.post('/register', async (req, res, next) => {
     });
 
     const userMailOptions = {
-      from: 'ecommerceapp8@gmail.com',
+      from: process.env.EMAIL_USER,
       to: email,
       subject: 'Registration Confirmation',
       text: `Thank you for contacting us. You have selected the service: ${service}. We will get back to you soon.`,
