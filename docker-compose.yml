@@ -3,8 +3,8 @@ services:
   lgsbackend:
     build: .
     restart: always
-    # labels:
-    #   - traefik.frontend.rule=Host:
+    labels:
+      - traefik.frontend.rule=Host:api.labyrinthglobalsolutions.com
     networks:
      - web
     ports:
